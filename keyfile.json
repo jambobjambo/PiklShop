@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "piklshop-42f40",
+  "private_key_id": "00a3cee60eddb2679cb244dae208ab807e1ec6a7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDb9l3FuOla1cr3\nT/G4/8RgHX0FE2Zq0OO5LZ9dZWssEp+um997497ZCV7XiyU/4i6EMPdsSeTGFJDz\ntM/HNUD+CPXANYSFUtfLshnpMS+ju5yupkq3ujCP4/xbUEIIJSM9dbYz/KHGhhUk\nwMUS8LrNeRiupMAAqcAGMrqi9ssiDJx+F5L2fQEZt/6cIw6I76fFtqtdC5YaelFc\nUkwOSXqnjFhTJzeNH2u4G8XIhCCPbiOG2XijUCxyS+7qk5arAPryMdcIZ5rmnaaq\nkeJB8SPovuLgIZAeOZq1MUfATlhfE+fELPnaDspssj57SFMkX+9YdMIZO1KWoSro\nUzwznEn7AgMBAAECggEBAInXGKpoFywKH9fdbEAfX4NP12GP57V2U85ejaisfn2u\n6gw0t9beVG8z1RBDrUMcTUQfn11n7QpIJxHhs/dFIwZOvRoHL5WQ9ZQ7dstQPGdh\nkW1M3jPGZNo255SdddO+2heQpW5smUBcE/HlL1qQKq/KfDItIfkIZ0I7FgQ7nc4m\naYveVkx94RxBn6rFqykBenQws5qDeW0jgay6WzbSgARUDPTtnyfNJjsJlyoDWLxU\np6mKEtcYS7F5ZVAXTAibKXQpuRYc21xpZZH8hrsEwd7Dbcb7VlZ0BALGchRd1VXU\n2L1JbpxpaXK1LzpiwEJK0IeIoa5dYCLMi8XuUY0f0oECgYEA8nipZlU+yEP4ImhT\n+nIPyHleMqYh7jsaw8DSTgihKjDXOn9vU0oH1Iuro7o3y/8tR6prA52hy0jqjlvX\nd8vg0nJ8Q6pSNyn8Tb3HadwYKUlAPHpgqAkIuqC6DPWdH0JdYQOoAyre6u+BSup5\nJ++YMhcQkNPYgMnPQdNBfUW3S0ECgYEA6DwypoNIvxoQJaEnQCFkfDhfbeeIaJ5I\nzWepqCF8NsOwkHjZq4RF5fmn0JmfzBqIblBZgq9Nzn2rA4iHX2gduHa2nw5iLRFx\njk/O3EKLctGUDVoon1Cy+E9+SWqhNIBj7ht+tk5+giSXf2ig+aTgDpMJHV+/K69O\nhnkVdtMbcjsCgYBh+TFxwQYiQ5ySwpcUPlx0Q941Fv3k1gsFh/cyQrhkZOHCqFVi\nUSqCzoDnIkqDajNwnsKo7lu+2VK1fRS+Oio4vrvJV5vq4FMrUoCuHJnCrO+AwG4n\n16aoSmOC8weu5tD2b1THGt6CDY6vp7iW03Aq5TjzXDZCK8lMLsFqje33QQKBgCZc\n21kaUsgOvCAbMOqtGXZTsZ/sIWJ20zvrJeF6NpStWttiu0JUBV/qD8irt/P1Zhgi\n+cZWwxmbNMbOpN4jytUP9zbrH1imiwWhNWC5NWPwLu7Nt+wpXocaSphCHwMXOmq4\n7AOdj9RbyxLm68CRddmyfEz35hKHUQdxtRP954jFAoGAQ9k2SnNKz2n2SzJ0Fb14\nWp+3jDJPTaFZKaE2FSlVrNiYwroCo8ncrwDDC7wco4wxFv1xkb3en3MJT9EEtyFA\ncxqDL8udmx3C0Jp+K08QkgxsivqJVNAHIV1nMV3TcVShZ3hxApUo6WCF63ffnQh2\n20j9cj92whbtA0sCwpXIJKA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "piklshop-42f40@appspot.gserviceaccount.com",
+  "client_id": "109726087120121606722",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/piklshop-42f40%40appspot.gserviceaccount.com"
+}
