@@ -1,7 +1,7 @@
 /**
  * Created by jamie on 07/11/2016.
  */
-var express  = require('express')
+var express  = require('express');
 var request = require('request');
 
 var vision = require('@google-cloud/vision')({
@@ -10,21 +10,27 @@ var vision = require('@google-cloud/vision')({
 });
 var app = express();
 
+app.get('/imageLoad', function (req,res){
+    var ImageURL = req.query['image'];
+    //res.set('Content-Type', 'HTML');
+    res.send("<img src=" + ImageURL + " />")
+});
+
 app.get('/imagesearch', function (req, res) {
-    var ImageURL = req.query['image']
+    var ImageURL = req.query['image'];
     var labelList = [];
-    vision.detectLabels(ImageURL, function(err, labels, apiResponse) {
-        labelList.push(labels[0])
-        labelList.push(labels[1])
-        labelList.push(labels[2])
+    vision.detectLabels('http://piklshop-42f40.appspot.com/imageLoad?image=' + ImageURL, function(err, labels, apiResponse) {
+        labelList.push(labels[0]);
+        labelList.push(labels[1]);
+        labelList.push(labels[2]);
         res.send(labelList)
     });
 });
 
 app.get('/productsearch', function(req,res){
-    var ImageURL = req.query['image']
+    var ImageURL = req.query['image'];
     request('http://piklshop-42f40.appspot.com/imagesearch?image=' + ImageURL, function (error, response, body) {
-        var SearchArray = JSON.parse(body)
+        var SearchArray = JSON.parse(body);
         request('http://api.shopstyle.com/api/v2/products?pid=uid625-36772825-65&fts=' + SearchArray[0] + '+' + SearchArray[1] + '+' + SearchArray[2] + '&offset=0&limit=10', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var cleaned = body.trim();
@@ -39,7 +45,7 @@ app.get('/productsearch', function(req,res){
                     '{"name" : "' + clothelist.products[7].brandedName + '", "image" : "' + clothelist.products[7].image.sizes.Best.url + '", "price" : "' + clothelist.products[7].priceLabel + '"},'+
                     '{"name" : "' + clothelist.products[8].brandedName + '", "image" : "' + clothelist.products[8].image.sizes.Best.url + '", "price" : "' + clothelist.products[8].priceLabel + '"},'+
                     '{"name" : "' + clothelist.products[9].brandedName + '", "image" : "' + clothelist.products[9].image.sizes.Best.url + '", "price" : "' + clothelist.products[9].priceLabel + '"}'+
-                    ']}'
+                    ']}';
                 res.send(jsonApp);
             }
         })
