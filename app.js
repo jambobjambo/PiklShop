@@ -26,7 +26,7 @@ app.get('/productsearch', function(req,res){
         if (!error && response.statusCode == 200) {
             var cleaned = body.trim();
             var clothelist = JSON.parse(cleaned);
-            var jsonApp = "{ 'Products' : [{ '1' :{ 'name' : '" + clothelist.products[0].brandedName + "', 'image' : '" + clothelist.products[0].image.sizes.Best.url + "', 'price' : '" + clothelist.products[0].priceLabel + "'}}]}"
+            var jsonApp = '{ "Products" : [{ "name" : "' + clothelist.products[0].brandedName + '", "image" : "' + clothelist.products[0].image.sizes.Best.url + '", "price" : "' + clothelist.products[0].priceLabel + '"}]}'
             res.send(jsonApp);
         }
     })
