@@ -9,11 +9,11 @@ var vision = require('@google-cloud/vision')({
     keyFilename: 'keyfile.json'
 });
 var app = express();
-var img = 'http://smashinghub.com/wp-content/uploads/2012/02/Girl-in-red-dress-22.jpg';
 
 app.get('/imagesearch', function (req, res) {
+    var ImageURL = req.query['image']
     var labelList = [];
-    vision.detectLabels(img, function(err, labels, apiResponse) {
+    vision.detectLabels(ImageURL, function(err, labels, apiResponse) {
         labelList.push(labels[0])
         labelList.push(labels[1])
         labelList.push(labels[2])
@@ -22,23 +22,27 @@ app.get('/imagesearch', function (req, res) {
 });
 
 app.get('/productsearch', function(req,res){
-    request('http://api.shopstyle.com/api/v2/products?pid=uid625-36772825-65&fts=dress+clothing+red&offset=0&limit=10', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var cleaned = body.trim();
-            var clothelist = JSON.parse(cleaned);
-            var jsonApp = '{ "Products":[{"name" : "' + clothelist.products[0].brandedName + '", "image" : "' + clothelist.products[0].image.sizes.Best.url + '", "price" : "' + clothelist.products[0].priceLabel + '"},' +
+    var ImageURL = req.query['image']
+    request('http://piklshop-42f40.appspot.com/imagesearch?image=' + ImageURL, function (error, response, body) {
+        var SearchArray = JSON.parse(body)
+        request('http://api.shopstyle.com/api/v2/products?pid=uid625-36772825-65&fts=' + SearchArray[0] + '+' + SearchArray[1] + '+' + SearchArray[2] + '&offset=0&limit=10', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var cleaned = body.trim();
+                var clothelist = JSON.parse(cleaned);
+                var jsonApp = '{ "Products":[{"name" : "' + clothelist.products[0].brandedName + '", "image" : "' + clothelist.products[0].image.sizes.Best.url + '", "price" : "' + clothelist.products[0].priceLabel + '"},' +
                     '{"name" : "' + clothelist.products[1].brandedName + '", "image" : "' + clothelist.products[1].image.sizes.Best.url + '", "price" : "' + clothelist.products[1].priceLabel + '"},' +
-                '{"name" : "' + clothelist.products[2].brandedName + '", "image" : "' + clothelist.products[2].image.sizes.Best.url + '", "price" : "' + clothelist.products[2].priceLabel + '"},'+
-                '{"name" : "' + clothelist.products[3].brandedName + '", "image" : "' + clothelist.products[3].image.sizes.Best.url + '", "price" : "' + clothelist.products[3].priceLabel + '"},'+
-                '{"name" : "' + clothelist.products[4].brandedName + '", "image" : "' + clothelist.products[4].image.sizes.Best.url + '", "price" : "' + clothelist.products[4].priceLabel + '"},'+
-                '{"name" : "' + clothelist.products[5].brandedName + '", "image" : "' + clothelist.products[5].image.sizes.Best.url + '", "price" : "' + clothelist.products[5].priceLabel + '"},'+
-                '{"name" : "' + clothelist.products[6].brandedName + '", "image" : "' + clothelist.products[6].image.sizes.Best.url + '", "price" : "' + clothelist.products[6].priceLabel + '"},'+
-                '{"name" : "' + clothelist.products[7].brandedName + '", "image" : "' + clothelist.products[7].image.sizes.Best.url + '", "price" : "' + clothelist.products[7].priceLabel + '"},'+
-                '{"name" : "' + clothelist.products[8].brandedName + '", "image" : "' + clothelist.products[8].image.sizes.Best.url + '", "price" : "' + clothelist.products[8].priceLabel + '"},'+
-                '{"name" : "' + clothelist.products[9].brandedName + '", "image" : "' + clothelist.products[9].image.sizes.Best.url + '", "price" : "' + clothelist.products[9].priceLabel + '"}'+
-            ']}'
-            res.send(jsonApp);
-        }
+                    '{"name" : "' + clothelist.products[2].brandedName + '", "image" : "' + clothelist.products[2].image.sizes.Best.url + '", "price" : "' + clothelist.products[2].priceLabel + '"},'+
+                    '{"name" : "' + clothelist.products[3].brandedName + '", "image" : "' + clothelist.products[3].image.sizes.Best.url + '", "price" : "' + clothelist.products[3].priceLabel + '"},'+
+                    '{"name" : "' + clothelist.products[4].brandedName + '", "image" : "' + clothelist.products[4].image.sizes.Best.url + '", "price" : "' + clothelist.products[4].priceLabel + '"},'+
+                    '{"name" : "' + clothelist.products[5].brandedName + '", "image" : "' + clothelist.products[5].image.sizes.Best.url + '", "price" : "' + clothelist.products[5].priceLabel + '"},'+
+                    '{"name" : "' + clothelist.products[6].brandedName + '", "image" : "' + clothelist.products[6].image.sizes.Best.url + '", "price" : "' + clothelist.products[6].priceLabel + '"},'+
+                    '{"name" : "' + clothelist.products[7].brandedName + '", "image" : "' + clothelist.products[7].image.sizes.Best.url + '", "price" : "' + clothelist.products[7].priceLabel + '"},'+
+                    '{"name" : "' + clothelist.products[8].brandedName + '", "image" : "' + clothelist.products[8].image.sizes.Best.url + '", "price" : "' + clothelist.products[8].priceLabel + '"},'+
+                    '{"name" : "' + clothelist.products[9].brandedName + '", "image" : "' + clothelist.products[9].image.sizes.Best.url + '", "price" : "' + clothelist.products[9].priceLabel + '"}'+
+                    ']}'
+                res.send(jsonApp);
+            }
+        })
     })
 });
 
