@@ -11,18 +11,16 @@ var vision = require('@google-cloud/vision')({
 var app = express();
 
 app.get('/imageLoad', function (req,res){
-    var ImageURL = req.query['imagename'];
-    var ImageCode = req.query['code'];
+    var ImageURL = req.query['image'];
     //res.set('Content-Type', 'HTML');
     console.log(ImageURL)
     res.send("<img src='https://firebasestorage.googleapis.com/v0/b/piklshop-42f40.appspot.com/o/images%2F" + ImageURL + "?alt=media&token=" + ImageCode + "' />");
 });
 
 app.get('/imagesearch', function (req, res) {
-    var ImageURL = req.query['imagename'];
-    var ImageCode = req.query['code'];
+    var ImageURL = req.query['image'];
     var labelList = [];
-    vision.detectLabels('http://piklshop-42f40.appspot.com/imageLoad?imagename=' + ImageURL + '&code=' + ImageCode, function(err, labels, apiResponse) {
+    vision.detectLabels(ImageURL, function(err, labels, apiResponse) {
         labelList.push(labels[0]);
         labelList.push(labels[1]);
         labelList.push(labels[2]);
@@ -31,8 +29,7 @@ app.get('/imagesearch', function (req, res) {
 });
 
 app.get('/productsearch', function(req,res){
-    var ImageURL = req.query['imagename'];
-    var ImageCode = req.query['code'];
+    var ImageURL = req.query['image'];
     request('http://piklshop-42f40.appspot.com/imagesearch?image=' + ImageURL + '&code=' + ImageCode, function (error, response, body) {
         var SearchArray = JSON.parse(body);
         request('http://api.shopstyle.com/api/v2/products?pid=uid625-36772825-65&fts=' + SearchArray[0] + '+' + SearchArray[1] + '+' + SearchArray[2] + '&offset=0&limit=10', function (error, response, body) {
