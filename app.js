@@ -25,7 +25,7 @@ app.get('/imagesearch', function (req, res) {
 app.get('/productsearch', function(req,res){
     var ImageURL = req.query['imagename'];
     var ImageCode = req.query['code'];
-    request('http://piklshop-42f40.appspot.com/imagesearch?image=' + ImageURL + '&code=' + ImageCode, function (error, response, body) {
+    request('http://piklshop-42f40.appspot.com/imagesearch?imagename=' + ImageURL + '&code=' + ImageCode, function (error, response, body) {
         var SearchArray = JSON.parse(body);
         request('http://api.shopstyle.com/api/v2/products?pid=uid625-36772825-65&fts=' + SearchArray[0] + '+' + SearchArray[1] + '+' + SearchArray[2] + '&offset=0&limit=10', function (error, response, body) {
             if (!error && response.statusCode == 200) {
