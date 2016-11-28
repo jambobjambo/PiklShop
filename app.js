@@ -22,6 +22,19 @@ app.get('/imagesearch', function (req, res) {
     });
 });
 
+app.post('/FBsearch', function (req, res) {
+    res.send(req);
+    /*var ImageURL = req.query['imagename'];
+    var ImageCode = req.query['code'];
+    var labelList = [];
+    vision.detectLabels('https://firebasestorage.googleapis.com/v0/b/piklshop-42f40.appspot.com/o/images%2F' + ImageURL + '?alt=media&token=' + ImageCode, function(err, labels, apiResponse) {
+        labelList.push(labels[0]);
+        labelList.push(labels[1]);
+        labelList.push(labels[2]);
+        res.send(labelList)
+    });*/
+});
+
 app.get('/productsearch', function(req,res){
     var ImageURL = req.query['imagename'];
     var ImageCode = req.query['code'];
