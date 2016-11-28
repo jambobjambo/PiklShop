@@ -22,8 +22,8 @@ app.get('/imagesearch', function (req, res) {
     });
 });
 
-app.post('/FBsearch', function (req, res) {
-    res.send(req);
+app.get('/FBsearch', function(req, res) {
+    res.send(req.body);
     /*var ImageURL = req.query['imagename'];
     var ImageCode = req.query['code'];
     var labelList = [];
