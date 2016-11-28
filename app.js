@@ -23,7 +23,7 @@ app.get('/imagesearch', function (req, res) {
 });
 
 app.get('/FBsearch', function(req, res) {
-    res.send(req.body);
+    res.send(req.body.id);
     /*var ImageURL = req.query['imagename'];
     var ImageCode = req.query['code'];
     var labelList = [];
