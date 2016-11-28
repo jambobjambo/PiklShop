@@ -23,15 +23,16 @@ app.get('/imagesearch', function (req, res) {
 });
 
 app.get('/FBsearch', function(req, res) {
+    res.send('Hello, Please work');
     /*var ImageURL = req.query['imagename'];
     var ImageCode = req.query['code'];
-    var labelList = [];*/
+    var labelList = [];
     vision.detectLabels(req.body.id, function(err, labels, apiResponse) {
         labelList.push(labels[0]);
         labelList.push(labels[1]);
         labelList.push(labels[2]);
         res.send(labelList)
-    });
+    });*/
 });
 
 app.get('/productsearch', function(req,res){
